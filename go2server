@@ -1,0 +1,13 @@
+$nam="data/book.csv";
+$separator=";";
+$fop = fopen($nam , "r+");
+$i=0;
+while (!feof($fop))
+{
+$read = fgets($fop, 3000);
+list($firstname, $secname, $fonenumbre) = split($separator ,$read);
+mysql_query("INSERT INTO table SET `firstname`='".$firstname."',  `secname`='".$secname."', `fonenumbre`='".$fonenumbre."' ");
+$i++;
+}
+fclose($fop);
+echo "Импортировано в базу записей: ".$i;
